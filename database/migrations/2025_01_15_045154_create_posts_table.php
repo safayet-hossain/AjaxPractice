@@ -1,11 +1,10 @@
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,6 +17,7 @@ class CreatePostTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('body');
+            $table->text('email');
             $table->timestamps();
         });
     }

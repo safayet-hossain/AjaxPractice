@@ -31,8 +31,10 @@ class SearchController extends Controller
 
      public function autocomplete(Request $request)
      {
-         $data = Post::where('title', 'LIKE', '%' . $request->query('query') . '%')
-                     ->pluck('title'); // Returns only title as an array
-         return response()->json($data);
+         $query = $request->get('query');
+         $posts = Post::where('title', 'LIKE', '%' . $query . '%')
+                      ->get(['id', 'title', 'body', 'email']);
+
+         return response()->json($posts);
      }
 }
